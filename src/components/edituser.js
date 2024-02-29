@@ -47,14 +47,24 @@ export default function EditUser(props) {
         <div className="container">
             <button className='btn btn-secondary' onClick={history.goBack}>Back</button>
             <h1>
-                User
+                Update User
             </h1>
-            <ul className="list-group">
-                <li className="list-group-item"> Id: {user.id}</li>
-                <li className="list-group-item"> Name: {user.name}</li>
-                <li className="list-group-item"> Email: {user.email}</li>
-                <li className="list-group-item"> Address: {user.address}</li>
-            </ul>
+            <div className="row">
+                <div className="col-md-6 offset-3">
+                    <form onSubmit={updateUser} className="form">
+                        <label>Name</label>
+                        <input type="text" name="name" className="form-control"
+                            value={user.name} onChange={inputChangeHandler}/>
+                        <label>Email</label>
+                        <input type="text" name="email" className="form-control"
+                            value={user.email} onChange={inputChangeHandler}/>
+                        <label>Address</label>
+                        <input type="text" name="address" className="form-control"
+                            value={user.address} onChange={inputChangeHandler}/>   
+                        <input type="submit" value="submitData"/> 
+                    </form>
+                </div>
+            </div>
         </div>
     )
 }
