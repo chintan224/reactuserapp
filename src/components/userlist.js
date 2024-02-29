@@ -32,7 +32,7 @@ export default function UserList(props) {
             console.log(error);
             setNewUsers([]);
         })
-    }, [users])
+    }, [])
 
     const tabRows = users.map((user,i) => {
         return (
