@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {useHistory} from 'react';
+import {useHistory} from 'react-router-dom';
 import UserService from '../service/userService';
 
 export default function UserList(props) {

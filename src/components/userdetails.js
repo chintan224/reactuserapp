@@ -5,7 +5,7 @@ import axios from 'axios'
 export default function UserDetails() {
     const [user, setNewUser] = useState({id:"", name:"", email:"", address:""})
 
-    const params=userParams();
+    const params=useParams();
     const history=useHistory();
 
     const baseURL="http://51.186.13.7:8080/api/user/";

@@ -20,7 +20,7 @@ export default function UserForm(props) {
 
     const schema={
         id:"",
-        name:Joi.string().required.lable("First Name"),
+        name:Joi.string().required().label("First Name"),
         email:Joi.string().required(),
         address:Joi.string().required()
     }
@@ -29,7 +29,7 @@ export default function UserForm(props) {
         const {name, value} = event.target;
         const obj = {[name]:value};
         const subschema = {[name]:schema[name]}
-        const result = Join.validate(obj, subschema);
+        const result = Joi.validate(obj, subschema);
         console.log(result);
         const {error} = result;
         return error ? error.details[0].message : null
@@ -72,7 +72,7 @@ export default function UserForm(props) {
         let newuser = {...formData};
         const errors = validate();
         if(!errors) {
-            UserService.create(newUser).then(response => {
+            UserService.create(newuser).then(response => {
                 history.push("/userList")
             }).catch(error =>{console.log(error);})
             toast.success("User Added Successfully")
@@ -93,8 +93,8 @@ export default function UserForm(props) {
                                 color="secondary"
                                 name="name"
                                 label="Firstname"
-                                value={FormData.name}
-                                autofocus
+                                value={formData.name}
+                                autoFocus
                                 margin="normal"
                                 fullWidth
                                 onChange={(event) => inputChangeHandler(event)}/>
@@ -106,7 +106,7 @@ export default function UserForm(props) {
                                 name="email"
                                 label="Email"
                                 value={FormData.email}
-                                autofocus
+                                
                                 margin="normal"
                                 fullWidth
                                 onChange={(event) => inputChangeHandler(event)} />
@@ -118,7 +118,6 @@ export default function UserForm(props) {
                                 name="address"
                                 label="Address"
                                 value={FormData.address}
-                                autofocus
                                 margin="normal"
                                 fullWidth
                                 onChange={(event) => inputChangeHandler(event)} />
